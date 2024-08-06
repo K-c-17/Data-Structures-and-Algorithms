@@ -1,11 +1,11 @@
 ## DSA for data engineers:
-0. Check the bookmarks on chrome in dsa folder 
-1. Leetcode medium
-2. In Linked List, Single linekd list is very important
-3. In Tree, BST is very important
-4. Graph is the least priority. Never comes in data engineering interviews
-5. In Algorithms, Searching is very important. Liner and Binary search is very important.
-6. In Algo, Sorting is very important. Hashing is also very important.
+1. Check the bookmarks on chrome in dsa folder 
+2. Leetcode medium
+3. In Linked List, Single linked list is very important
+4. In Tree, BST is very important
+5. Graph is the least priority. Never comes in data engineering interviews
+6. In Algorithms, Searching is very important. Liner and Binary search is very important.
+7. In Algo, Sorting is very important. Hashing is also very important.
 
     Please check out this [Dashboard](https://whimsical.com/dsa-for-data-engineers-W9dF8SC72c4dfAuCwL5jFV) that summarizes all the requirements
 
@@ -33,7 +33,7 @@
 2. The array created using numpy and array module is more memory efficient than the in-built list DS
 3. Array can store element of specified datatype.
 
-    In array initialization we write: **myArray=array.array('i',[12,3,4,5,3])**
+    In array initialization we write: **myArray=array.array('i',[1,2,3,4,5,3])**
     
     Here i is tells us about array type. Following can be the array type
 
@@ -88,21 +88,27 @@
 3.  Time & Space Complexity of initialization is O(mn) [m:columns | n: rows]
 4.  Two ways of inserting values in 2-D arrays: Adding column and adding rows
 5.  **Adding a column**: TC is O(mn) Shifting a column comprising of n rows to the right till you reach the mth column
-<br>        newTwoDArray=np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=1)  [1: column and 0: row]
+```python
+    newTwoDArray = np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=1) # [1: column and 0: row]
+```
 6. **Adding a row**: TC is O(mn) Shifting a rows comprising of m column one step down till you reach the nth row 
-<br>        newTwoDArray=np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=0)  [1: column and 0: row]
+```python       
+newTwoDArray=np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=0) #  [1: column and 0: row]
+```
 7.  The insertion in a 2-D array is not a mutable operation. You will have to store the result in some other variable
 8.  **np.append(array_name,to_be_added_2Darray,axis=0 or 1)**. Append will simply add it post the last row/column
 9. **len(twoDArray)**: Give the number of rows in a 2D array
 10. **len(twoDArray[0])**: Gives the number of columns in a 2D array
 11.  **Accessing elemetns of 2D array**: array[rowIndex][colIndex] . TC: O(1) | SC: O(1)
 12. **Traversing element of 2D array**: 
-            def traverseTDArray(array):
-                for i in range(len(array)):
-                    for j in range(len(array[0])):
-                        print(array[i][j])
+    ```python
+                def traverseTDArray(array):
+                    for i in range(len(array)):
+                        for j in range(len(array[0])):
+                            print(array[i][j])
 
-    TC: O(nm)   |   SC: O(1)
+        #TC: O(nm)   |   SC: O(1)
+    ```
 13. **Searching in a 2D array**: In linear search we do a nested loop search of rows and columns and checks each element. We see if this is the element we are looking for. The search goes through a row and then moves to the row below it.          TC: O(mn)    | SC(1)
 14. **Deleting from 2D array**: During deletion numpy creates another 2-D array but without the row/column that you want to delete. This results in a space complexity of O(mn) since all of remaining matrix has to be copied at a new location.
                              np.delete(twoDArray,index,axis=1)           TC: O(nm) : SC(mn)
