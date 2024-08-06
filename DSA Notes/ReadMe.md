@@ -115,8 +115,6 @@ newTwoDArray=np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3
 15. **np.delete** is a immutable operation
 16. Because **Insertion and Deletion** operation in a 2D array is an immutable operation, and because in both the operations we have to paste the elements of existing array into a new memory location **so the space complexity of both operations is O(MN)**
 17. Time complexity and Space complexity of 2D array operations: 
-<br>
-
     ![alt text](../2_Array/CourseMaterial/TCSC_2D.png)
 
 
