@@ -105,7 +105,8 @@
 
 10. **len(twoDArray[0])**: Gives the number of columns in a 2D array
 
-11.  **Accessing elemetns of 2D array**: array[rowIndex][colIndex] . TC: O(1) | SC: O(1)
+11.  **Accessing elements of 2D array**: 
+`array[rowIndex][colIndex] #TC: O(1) | SC: O(1)`
 
 12. **Traversing element of 2D array**: 
     ```python
@@ -165,11 +166,13 @@
     <br>sum(myList): return the sum of all values in list
     <br>sum(myList)/len(myList): this will give the average of all the elements in the list
 20. The **.shuffle()** method in Python is used to randomly shuffle the elements of a list. It modifies the original list in place and does not return anything (i.e., it returns None).
-    <br><br>        import random
-<br>
-    <br>            my_list = [1, 2, 3, 4, 5]
-    <br>            random.shuffle(my_list)
-    <br>            print(my_list)
+    ```python
+        import random
+
+        my_list = [1, 2, 3, 4, 5]
+        random.shuffle(my_list)
+        print(my_list)
+    ```
 21. The **all() function** in Python returns True if all elements of an iterable are true (or if the iterable is empty), otherwise it returns False.
         <br> For eg. all(iterable)
 
@@ -205,10 +208,9 @@
 
 
 - **Time and Space Complexity of a List:**
-<br>
-<br>
+
 ![alt text](ListTCSC.png)
-<br>
+
 
 #### LIST COMPREHENSION:
 1.  new_list = [new_item for item in list] <br>
