@@ -85,21 +85,28 @@
 <br>    twoDArray=np.array([ [11,15,6],[10,14,5],[15,18,14,9] ])
 <br>        print(twoDArray)
 </i>
-3.  Time & Space Complexity of initialization is O(mn) [m:columns | n: rows]
+3.  Time & Space Complexity of initialization is O(mn)  [m:columns | n: rows]
+
 4.  Two ways of inserting values in 2-D arrays: Adding column and adding rows
 5.  **Adding a column**: TC is O(mn) Shifting a column comprising of n rows to the right till you reach the mth column
-```python
-    newTwoDArray = np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=1) # [1: column and 0: row]
-```
+
+    ```python
+        newTwoDArray = np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=1) # [1: column and 0: row]
+    ```
 6. **Adding a row**: TC is O(mn) Shifting a rows comprising of m column one step down till you reach the nth row 
-```python       
-newTwoDArray=np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=0) #  [1: column and 0: row]
-```
+    ```python       
+    newTwoDArray=np.insert(existing2DArray,index of insertion(starts with 0),[[1,2,3,4]],axis=0) #  [1: column and 0: row]
+    ```
 7.  The insertion in a 2-D array is not a mutable operation. You will have to store the result in some other variable
+
 8.  **np.append(array_name,to_be_added_2Darray,axis=0 or 1)**. Append will simply add it post the last row/column
+
 9. **len(twoDArray)**: Give the number of rows in a 2D array
+
 10. **len(twoDArray[0])**: Gives the number of columns in a 2D array
+
 11.  **Accessing elemetns of 2D array**: array[rowIndex][colIndex] . TC: O(1) | SC: O(1)
+
 12. **Traversing element of 2D array**: 
     ```python
                 def traverseTDArray(array):
