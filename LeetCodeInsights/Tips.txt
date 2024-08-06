@@ -1,0 +1,387 @@
+------------------------------------------------------
+When you have two strings and you want to check if all elements of string1 are present in string2:
+Approach1: all(char in string2 for char in string1)
+Approach2: make both string1 and string2 as sets (set1 and set2) and then use: if (set1&set2 == set2)
+
+Approach2 is extremely efficient because of highly optimized set methods (such as union, intersection, etc)
+
+------------------------------------------------------
+How do you sort a dictionary in order of their values:
+
+my_dict = {'a': 4, 'b': 2, 'c': 1, 'd': 3}
+
+# Sort the dictionary by values in ascending order
+sorted_dict = dict(sorted(my_dict.items(), key=lambda item: item[1])) --In sorted(iterable, key=key, reverse=reverse) key refers to A Function to execute to decide the order. Default is None
+print(sorted_dict)
+
+# sorted method
+myDict = {'eooooa': 1, 'aas': 2, 'udd': 3, 'sseo': 4, 'werwi': 5}
+
+print(sorted(myDict, key=len))
+
+
+------------------------------------------------------------
+Write a function fizz_buzz_sum to find the sum of all multiples of 3 or 5 below a target value:
+def fizz_buzz_sum(target):
+    return sum(x for x in range(target) if x % 3 == 0 or x % 5 == 0)            #you use list comprehension when you know that the filed that you are going to return should be a list.
+
+-------------------------------------------------------------------
+If you want to return all the keys from a dictionary that have a specific value (min_sum), you can do this:
+[r for r, s in index_sum.items() if s == min_sum]
+
+
+-------------------------------------------------------------------
+Difference between x/10 and x//10
+x/10 is True Division. Always returns a floating point number even if num and denom are int.
+x//10 is Floor Division. Performs floor division and returns the largest integer less than or equal to the result. 
+
+--------------------------------------------------------------------
+Identify Plaindrome Question:
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        og_x=x
+        revertedNumber=0
+        if (x%10==0) or (x<0):
+            return False
+        if x==0:
+            return True
+        while (revertedNumber<x):
+            revertedNumber=revertedNumber*10+x%10        # most crucial part
+            x=x/10
+        if len(str(og_x))!=0:
+            return (revertedNumber/10)==x
+        else:
+            return revertedNumber==x
+
+OR 
+
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        revertedNumber=0
+        if (x%10==0 and x!=0) or (x<0):
+            return False
+
+        while (revertedNumber<x):
+            revertedNumber=revertedNumber*10+x%10       # most crucial part
+            x=x//10
+        
+        return (revertedNumber==x) or (revertedNumber//10)==x 
+
+--------------------------------------------------------------------------------------
+How to sort a list?
+result = sorted('kshitij')
+print(result)  # Output: ['h', 'i', 'j', 'k', 's', 't', 't']
+
+So, ''.join(sorted(result))     #this will return a sorted string 
+
+--------------------------------------------------------------------------------------
+Grouping of anagrams:
+This is solved through hashmap. In this keys are sorted strings and values are list of anagrams.
+
+Traverse through list of strings:
+
+            sorted_str=''.join(sorted(i))
+            if sorted_str not in collector.keys():
+                collector[sorted_str]=[i]
+--------------------------------------------------------------------------------------------------
+Given two list l1 and l2. How can we check if l1 is a subset of l2
+
+This can be done via set, but that will fail if there are duplicate values in l1 or l2
+Another approach is:
+
+list1 = [1, 2, 2, 3]
+list2 = [1, 2, 3, 4, 5]
+
+# Check if list1 is a subset of list2 considering duplicates
+is_subset = all(list1.count(item) <= list2.count(item) for item in list1)
+
+print(is_subset) 
+
+
+--------------------------------------------------------------------------------------------------
+reversed(my_list) is immutable and my_list.reverse() is mutable
+
+Also, this code will not work:
+self.items=[1,2,3,45,6]
+reversed(self.items).pop()
+
+since The reversed function in Python returns an iterator that produces the elements of the given sequence in reverse order, 
+but it does not modify the sequence in place. Additionally, calling pop() on an iterator will not work as pop() is a list
+ method and not applicable to iterators.
+
+To rectify this use:
+self.items = [1, 2, 3, 45, 6]
+reversed_items = list(reversed(self.items))
+popped_item = reversed_items.pop()
+
+
+---------------------------------------------------------------------------------------------------
+How to find the distance between two alphabet character?
+
+distance=ord('d')-ord('a') #outputs 4
+
+The ord() function in Python is used to return the Unicode code point (integer representation) of a given character. 
+In other words, it converts a character into its corresponding Unicode integer value.
+
+For eg. print(ord('a'))  # Output: 97
+
+Common Use Cases
+Alphabetic Indexing: It can be used to calculate the position of a character in the alphabet.
+
+#This was used in morse code problem, it helps you by not writing a list of all alphabets
+#In morse code problem you can use set comprehension so that there won't be any issue of duplicate morse code
+STUDY THIS: transformed_code={"".join(code_list[ord(i)-ord('a')] for i in val) for val in words}
+
+----------------------------------------------------------------------------------------------------
+How to remove punctuation( "!?',;.") effectively froma string 
+# Define the characters to remove
+remove_chars = "!?',;."
+
+# Create a translation table
+translation_table = str.maketrans('', '', remove_chars)
+
+# Remove the characters
+cleaned_text = text.translate(translation_table)
+
+# Output the result
+print(cleaned_text)
+
+Explanation:
+Define the Characters to Remove:
+
+remove_chars = "!?',;." specifies the characters you want to remove from the string.
+Create a Translation Table:
+
+translation_table = str.maketrans('', '', remove_chars) creates a translation table that maps each character in remove_chars to None.
+Remove the Characters:
+
+cleaned_text = text.translate(translation_table) removes the specified characters from text using the translation table.
+
+------Alternate approach
+# Define the characters to remove
+remove_chars = "!?',;."
+
+# Use a list comprehension to filter out unwanted characters
+cleaned_text = ''.join([char for char in text if char not in remove_chars])
+
+------------------------------------------------------------------------------------------------------
+To check if a string in alphanumeric
+c.isalnum() #where c is the string value
+Returns True if all characters in the string are alphanumeric.
+Returns False if the string contains any non-alphanumeric characters or is empty.
+For eg:
+s = "abc123"
+print(s.isalnum())  # Output: True
+
+s = "abc 123"
+print(s.isalnum())  # Output: False
+
+s = ""
+print(s.isalnum())  # Output: False
+
+s = "abc@123"
+print(s.isalnum())  # Output: False
+
+
+------------------------------------------------------------------------------------------------------
+Use of default dict:
+The defaultdict is a subclass of the built-in Python dict (dictionary) class. It is part of the collections module 
+and provides a default value for a nonexistent key, which means you don't have to check whether a key is present 
+before updating or accessing it.
+
+When you create a defaultdict and provide int as the default factory, it initializes every new key with a default 
+value of 0. This is particularly useful for counting or accumulating values.
+
+from collections import defaultdict
+For eg. collector = defaultdict(int)
+
+How to create something like default dict without calling collections module:
+    collector = {}
+    for i in nums:
+        collector[i] = collector.get(i, 0) + 1
+    return [key for key, val in collector.items() if val == 1]
+
+
+--------------------------------------------------------------------------------------------------------
+Python like way of writing:
+
+self.head=self.tail
+self.tail=self.head
+
+another way of writing this is:
+self.head,self.tail=self.tail,self.head
+
+------------------------------------------------------------------
+While traversing a Singly Linked list:
+
+current=self.head
+while current.next is not None:
+    pass
+
+while current is not None:
+    pass
+
+The first loop will go till second last node and the second loop will go till last node
+
+--------------------------------------------------------------------------
+Reversing a linked list
+
+    def reverse(self):
+        prev_node=None
+        current=self.head
+        while current is not None:
+            next_node=current.next
+            current.next=prev_node
+            prev_node=current
+            current=next_node
+        #changing the head and tail of the linked list
+        self.head,self.tail=self.tail,self.head
+        return 1
+
+
+-----------------------------------------------------------------------------
+--Amrotized Complexity
+Amortized time complexity is a way to analyze the time complexity of an algorithm over 
+a sequence of operations, averaging out the cost of operations to provide a more 
+realistic understanding of their efficiency. This is particularly useful when an 
+operation has a high time complexity in the worst case, but this worst-case scenario 
+happens infrequently.
+
+Initial Scenario:
+
+You have a stack implemented using a dynamic array with an initial capacity.
+When the array is full and you need to push a new element, the array needs to be resized (usually doubled in size).
+Resizing Cost:
+
+The resizing operation involves copying all the elements from the old array to the new, larger array.
+This copying takes O(n) time where n is the number of elements in the stack.
+Amortized Analysis:
+
+Even though a single push operation might occasionally take O(n) time due to resizing, this resizing does not happen every time.
+Most of the push operations simply take O(1) time (constant time).
+
+Key Takeaways
+Amortized Analysis: It provides an average cost per operation over a series of operations.
+Push Operation in Stack: While the worst-case time complexity for a single push due to resizing can be O(n), the amortized time complexity over a series of push operations is O(1).
+
+
+-----------------------------------------------------------------------------
+--How to think of a recursive problem?
+
+It is to breakdown your problem into sub problem and then break it down further into sub-problems.
+Do this until you reach at your base case who Result you know.
+
+OR
+
+In recursion you are going to go inside function's function's function's......until you hit something that will pull you out of this loop
+
+-----------------------------------------------------------------------------------------
+--if not x:
+
+In Python, the expression if not x: is used to check if the variable x evaluates to False. 
+The not operator negates the truth value of x. This means that the condition inside the if 
+statement will be true if x is considered False in a Boolean context.
+
+
+if not x: --> is True in following scenarios:
+
+x is None
+x is 0
+x is False
+x is an empty string '', list [], tuple (), dictionary {}, set set(), or any other empty container.
+
+-----------------------------------------------------------------------------------------
+--How to write two commands in the same line
+
+The ; sign is used to place commands on the same line. The following two code chunks are equivalent:
+
+# Same line
+command1; command2
+
+# Separate lines
+command1
+command2
+
+-----------------------------------------------------------------------------------------
+---How assignment operator works in Python
+In Python, when you assign one list to another using the assignment operator (=), both variables reference the same list object in memory. 
+Therefore, modifying the new list will also affect the original list because they are not independent of each other; they are two names 
+for the same object.
+
+
+To create an actual copy of the list that can be modified independently, you can use one of the following methods:
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+areas_copy = list(areas)
+
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+areas_copy = areas[:]
+
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
+areas_copy = areas.copy()
+
+------------------------------------------------------------------------------------
+---How to get help about the definition of a function
+To get help on the max() function, for example, you can use one of these calls:
+
+help(max)
+?max
+
+------------------------------------------------------------------------------------
+--PIP : Python Maintainenace system for Python
+
+--------------------------------------------------------------------------------
+---Numpy:
+
+numpy arrays cannot contain elements with different types. If you try to build such a list, some of the elements' types are changed 
+to end up with a homogeneous list. This is known as type coercion
+
+---Broadcasting addition in numpy arrays:
+
+import numpy as np
+
+# Define a 2D array
+array_2d = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Define a 1D array
+array_1d = np.array([10, 20, 30])
+
+# Add the 2D array and the 1D array
+result = array_2d + array_1d
+print(result)
+
+[[ 1+10, 2+20, 3+30],
+ [ 4+10, 5+20, 6+30]]
+
+ In summary, when you add a 2D array to a 1D array in NumPy, the 1D array is broadcasted to 
+ match the shape of the 2D array, and the addition is performed element-wise. The shapes 
+ must be compatible for broadcasting, meaning each dimension must either be the same or 
+ one of them must be 1.
+
+------------------------------------------------------------------------------------------------------
+#Generator object and Generator functions
+
+Generator object:
+Eg: (z for z in range(5)) 
+-->This doesn't return anything. It is saved in memory as generator object. 
+When you call (z for z in range(5)) like this: 
+for num in (z for z in range(5)):  
+It will start outputing the values in num in each iteration. That way it doesn't hog up the memory when its not called.
+You can get the next element from a generator object by:    next(g_object)
+
+Generator function:
+It shows the same behaviour as the generator object. It doesn't return anything rather it yields numbers when this is called.
+For eg:
+    def num_gen(num):
+        counter=0
+        while counter<=num:
+            yield counter
+            counter+=1
+
