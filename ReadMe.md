@@ -37,7 +37,7 @@
     
     Here i is tells us about array type. Following can be the array type
 
-   ![alt text](../2_Array/CourseMaterial/array+module+.png)
+   ![alt text](02_Array/CourseMaterial/array+module+.png)
 
 4. Element of array are located in contiguous blocks in the memory
 5. 2 types of array: One Dimensional and Multi-Dimensional
@@ -123,7 +123,7 @@
 15. **np.delete** is a immutable operation
 16. Because **Insertion and Deletion** operation in a 2D array is an immutable operation, and because in both the operations we have to paste the elements of existing array into a new memory location **so the space complexity of both operations is O(MN)**
 17. Time complexity and Space complexity of 2D array operations: 
-    ![alt text](../2_Array/CourseMaterial/TCSC_2D.png)
+    ![alt text](02_Array/CourseMaterial/TCSC_2D.png)
 
 
 ## Lists:
@@ -209,7 +209,7 @@
 
 - **Time and Space Complexity of a List:**
 
-![alt text](ListTCSC.png)
+![alt text](img/ListTCSC.png)
 
 
 #### LIST COMPREHENSION:
@@ -306,12 +306,12 @@ Some of the commonly used methods of sets in Python include:
     ```
 9.  Since a dictionary is actually implemented through a hashmap in the backend, so the under the hood assembly usually has three part: Key, Hashfunction, index and (Key,value) <br>
 
-    ![alt text](DictInMemory.png)
+    ![alt text](img/DictInMemory.png)
 <br>
 
 10. If a hashfunction outputs same index values for two keys, it is called as **collision**. In case of collision, the (key,value) pairs are stored as **linked list** in the backend.
 <br>
-    ![alt text](DictInMemExample.png)
+    ![alt text](img/DictInMemExample.png)
 
 11. **Insert/Update in Dictionary:** 
     <br> myDict['key']=value (key can be an existing one or a new one)
@@ -383,9 +383,9 @@ Some of the commonly used methods of sets in Python include:
 
 17. Difference between **Dictionary and List:** _(Dictionaries are ordered as of Python 3.7)_
 
-    ![alt text](DictVsList.png)
+    ![alt text](img/DictVsList.png)
 18. **Time and Space Complexity** of DICTIONARY:
-    ![alt text](TCSCFDict.png)
+    ![alt text](img/TCSCFDict.png)
 
 19. The key value of a dictionary have to be immutable. So, there can't be a dict that is having they keys as a list.
 20. To delete a key from a dictionary, you do: del(dict1["key1"])
@@ -477,7 +477,7 @@ Some of the commonly used methods of sets in Python include:
     <br> myTuple=((1,2),(3,4))
 5. **Time and Space complexity** of TUPLE operations:<br>
     
-    ![alt text](image.png)
+    ![alt text](img/image.png)
  
 ## Object Oriented Programming (OOP):
 1.  There are two types of software development paradigms: OOP and Procedural
@@ -826,7 +826,7 @@ Some of the commonly used methods of sets in Python include:
 
 <h3> <u>TIME AND SPACE COMPLEXITY of a Stack </u><i>(implemented using Linked List):</i></h3><br>
 
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 
 <br>
@@ -890,7 +890,7 @@ Some of the commonly used methods of sets in Python include:
 7.  **Time and Space Complexity** for all these methods is O(1) 
 
 
-    ![alt text](image-2.png)
+    ![alt text](img/image-2.png)
 
 
 
@@ -907,7 +907,7 @@ Some of the commonly used methods of sets in Python include:
 
     **Time and Space Complexity of a Circular Queue**
 
-    ![alt text](image-3.png)
+    ![alt text](img/image-3.png)
 
 
 ### Operations on Queue (Implemented using Linked List):
@@ -922,12 +922,12 @@ Some of the commonly used methods of sets in Python include:
 
     **Time and Space Complexity of Queue (implemented using Linked List)**
 
-    ![alt text](image-4.png)
+    ![alt text](img/image-4.png)
 
 
 ### Time nad Space Complexity Comparison between all types of implementation of Queues
 
-![alt text](image-5.png)
+![alt text](img/image-5.png)
 
 
 ### Python Queue Modules
@@ -1017,11 +1017,11 @@ Some of the commonly used methods of sets in Python include:
 4.  Recursion is **not space efficient** whereas Iterative algo is.
 
 
-![alt text](image-10.png)
+![alt text](img/image-10.png)
 
 
 ### When to avoid Recursion??
- ![alt text](image-11.png)
+ ![alt text](img/image-11.png)
 
 
 ### How to write a Recursive function?
@@ -1105,150 +1105,1047 @@ $$
 ### Summary
 The Master Theorem is a helpful tool to quickly determine the time complexity of recursive functions when they fit a specific pattern. Understanding how `a`, `b`, and `d` relate allows you to apply the appropriate case and find the overall complexity.
 
-
 ## TREES
-1.  A tree is a non-linear data structure 
-2.  There is hirarchial relationship between its elements without having any cycle
-3.  It is basically reversed from rela life trees
-4.  Each node has two components:
-    -   Data
-    -   Reference to subsequent nodes
 
-#### Why do we need Tree datastructure:
-1.  Allow quicker and easier access since this is non-linear
-2.  To store info that has hirarchial data structure
-3.  Some Trees have faster search than linear data structures like Linked List, list etc.
+### Binary Trees
 
+### What is a Tree?
+- A **Tree** is a **non-linear data structure** with a hierarchical relationship between its elements, without forming any cycles.
+- **Real-life Example**: A café menu with categories like Hot Drinks and Cold Drinks, further divided into subcategories, forms a tree structure.
 
-#### Terminology:
-1.  **Root**: _top node without parent_
-2.  **Edge**: _a link betwen parent and child_
-3.  **Leaf**: _a node without children_
-4.  **sibling**: _children with same parent_
-5.  **ancestor**: _parent,grandparent,great grandparent of a node_
-6.  **depth of node**: _a length of the path from root to node_
-7.  **height of node**: _a length of the path from the ndoe to the deepest node_
-8.  **depth of tree**: _depth of root node_
-9.  **height of tree**: _height  of root node. Height is computed with deepest node as the refrence_
+#### Properties of a Tree
+1. **Hierarchical Structure**: Represents data in a hierarchy, moving from general (root) to specific (leaves).
+2. **Node Components**: Each node has:
+   - Data.
+   - References (or pointers) to its children.
+3. **Root Node**: The topmost node without any parent.
+4. **Subnodes**: Nodes under the root, each forming subcategories.
 
+---
 
-### Binary Tree
-1.  Each node has atmost 2 children: **left** & **right**
-2.  Binary tres is a family of data structure (BST, Heap Tree, AVL, red black trees, Syntax Trees)
+### Why Do We Need Trees?
+- **Efficiency**: Compared to linear data structures (arrays, linked lists), trees provide faster access and better performance for hierarchical data.
+- **Applications**:
+  - Hierarchical data (e.g., folder structures, XML/HTML data).
+  - Fast search, insert, and delete operations (e.g., Binary Search Trees, AVL Trees).
+  - Specialized problems like Huffman Coding and Expression Parsing.
 
-#### Why we need Binary Tree:
-1.  Binary Trees are prerequisite for more advanced trees like BST, AVL, Red Black Trees
+---
 
-#### Different Types of Binary Trees:
--   **Full Binary Tree**: Each node has 0 or 2 children and not one
--   **Perfect Binary Tree**: All non-leaf node have 2 children and they are at the same level
--   **Complete Binary Tree**: All levels are completely filled exced the last level (leaf level)
--   **Balanced Binary Tree**: Each leaf is not more than a certain distance from the root node than any other leaf
+### Binary Trees
+- **Definition**: A type of tree where each node has at most two children, referred to as the **left** and **right** children.
+- **Examples**:
+  - **Binary Search Tree (BST)**.
+  - **Heap Tree**.
+  - **AVL Tree**.
+  - **Red-Black Tree**.
 
-#### Creation of Binary Tree:
+#### Importance of Binary Trees
+- **Foundational**: Prerequisite for advanced tree structures like BST, AVL, and Red-Black Trees.
+- **Applications**:
+  - Huffman Coding.
+  - Expression Parsing.
+  - Priority Queues (Heap Trees).
 
-**There are two ways of doing this:**
--   Linked List
--   Python List (Array)
+---
 
-##### Using Linked List
-1.  Each node will have three components:
-    -   Data
-    -   Left Pointer (address of left child)
-    -   Right Pointer (address of right child)
+### Types of Binary Trees
+1. **Full Binary Tree**: Every node has either 0 or 2 children (no single-child nodes).
+2. **Perfect Binary Tree**: All internal nodes have 2 children, and all leaf nodes are at the same level.
+3. **Complete Binary Tree**: All levels are fully filled except the last, where nodes are as left-aligned as possible.
+4. **Balanced Binary Tree**: The depth of any two leaf nodes differs by at most one.
 
+---
 
-<u>**_Following is the diargram_**</u>
-![alt text](image-12.png)
+### Binary Tree Terminology
+1. **Root**: The topmost node without a parent.
+2. **Edge**: A link between a parent and a child.
+3. **Leaf**: A node without children.
+4. **Sibling**: Children of the same parent.
+5. **Ancestor**: Parent, grandparent, or any predecessor of a node.
+6. **Depth**: Number of edges from the root to the node.
+7. **Height**:
+   - Of a node: Number of edges from the node to the deepest leaf.
+   - Of a tree: Height of the root node.
 
+---
 
-##### Using Python List
-1.  We leave cell at index 0 a blank. This helps in making the formula calculation easier
-2.  `left` and `right` is computed using formula:
-    -   `cell[2x]`
-    -   `cell[2x+1]` 
-    _here x is the index of the parent node_
+### Binary Tree Representation
+1. **Linked List Representation**:
+   - Each node stores:
+     - Data.
+     - Left child pointer.
+     - Right child pointer.
 
-3.  In order to avoid any empty cell in your list post insertion, make sure you compute the total number of nodes in your tree and intialize your list accordingly
+   ```python
+   class TreeNode:
+       def __init__(self, data):
+           self.data = data
+           self.leftChild = None
+           self.rightChild = None
+   ```
 
+2. **Python List Representation**:
+   - Index-based storage:
+     - **Left Child**: `2x`
+     - **Right Child**: `2x + 1`
+   - Example:
+     - Root is at index 1.
+     - Left child of root: `index 2`.
+     - Right child of root: `index 3`.
 
-#### Create Binary Tree using Linked List:
+   ```python
+   class BinaryTree:
+       def __init__(self, size):
+           self.customList = size * [None]
+           self.lastUsedIndex = 0
+           self.maxSize = size
+   ```
 
--   Creation of Tree
--   Insertion of a node
--   Deletion of a node
--   Search for a value
--   Traverse all nodes
--   Deletion of tree
+---
 
+### Binary Tree Operations
 
-**Creation of Tree**
+#### Using Linked List
+1. **Traversals**:
+   - **Pre-order**: Visit root, left subtree, right subtree.
+   - **In-order**: Visit left subtree, root, right subtree.
+   - **Post-order**: Visit left subtree, right subtree, root.
+   - **Level-order**: Visit nodes level by level.
 
--   Tree Creation:
+   ```python
+   def preOrderTraversal(rootNode):
+       if not rootNode:
+           return
+       print(rootNode.data)
+       preOrderTraversal(rootNode.leftChild)
+       preOrderTraversal(rootNode.rightChild)
+   ```
 
-    -   Time Complexity: O(1)
-    -   Space Complexity: O(1)
+2. **Insertion**: Adds a node to the first available position.
 
-**Traversal of Trees**
+   ```python
+   def insertNodeBT(rootNode, newNode):
+       if not rootNode:
+           rootNode = newNode
+       else:
+           customQueue = queue.Queue()
+           customQueue.enqueue(rootNode)
+           while not(customQueue.isEmpty()):
+               root = customQueue.dequeue()
+               if root.value.leftChild is None:
+                   root.value.leftChild = newNode
+                   return
+               elif root.value.rightChild is None:
+                   root.value.rightChild = newNode
+                   return
+   ```
 
-There are two ways to traverse a tree:
--   Depth first search
-    -   Preorder traversal
-    -   Inorder traversal
-    -   Post order traversal
+3. **Search**: Searches nodes level-wise.
 
--   Breadth first search
-    -   Level order traversal
+   ```python
+   def searchBT(rootNode, nodeValue):
+       if not rootNode:
+           return "The Binary Tree does not exist"
+       else:
+           customQueue = queue.Queue()
+           customQueue.enqueue(rootNode)
+           while not(customQueue.isEmpty()):
+               root = customQueue.dequeue()
+               if root.value.data == nodeValue:
+                   return "Success"
+               if root.value.leftChild:
+                   customQueue.enqueue(root.value.leftChild)
+               if root.value.rightChild:
+                   customQueue.enqueue(root.value.rightChild)
+           return "Not found"
+   ```
 
+4. **Deletion**: Deletes a node by replacing it with the deepest node, then removing the deepest node.
 
-#### Pre-order Traversal
-1.  Order here is: **Root >> Left >> Right**
+   ```python
+   def deleteNodeBT(rootNode, node):
+       if not rootNode:
+           return "The Binary Tree does not exist"
+       else:
+           customQueue = queue.Queue()
+           customQueue.enqueue(rootNode)
+           while not(customQueue.isEmpty()):
+               root = customQueue.dequeue()
+               if root.value.data == node:
+                   dNode = getDeepestNode(rootNode)
+                   root.value.data = dNode.data
+                   deleteDeepestNode(rootNode, dNode)
+                   return "The node has been successfully deleted"
+   ```
 
-![alt text](image-13.png)
+5. **Complete Implementation**:
+```python
+   import QueueLinkedList as queue
 
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.leftChild = None
+        self.rightChild = None
 
-##### Time Complexity
+newBT = TreeNode("Drinks")
+leftChild = TreeNode("Hot")
+tea = TreeNode("Tea")
+coffee = TreeNode("Coffee")
+leftChild.leftChild = tea
+leftChild.rightChild = coffee
+rightChild = TreeNode("Cold")
+newBT.leftChild = leftChild
+newBT.rightChild = rightChild
 
-- In **pre-order traversal**, each node in the binary tree is visited exactly once.
-- For each node, the algorithm processes it (prints its value) and makes recursive calls for both its left and right children.
-- Since the algorithm visits all **N** nodes exactly once, the total number of operations is proportional to **N**.
+def preOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    print(rootNode.data)
+    preOrderTraversal(rootNode.leftChild)
+    preOrderTraversal(rootNode.rightChild)
 
-Thus, the **time complexity** is:
+def inOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    inOrderTraversal(rootNode.leftChild)
+    print(rootNode.data)
+    inOrderTraversal(rootNode.rightChild)
 
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    postOrderTraversal(rootNode.leftChild)
+    postOrderTraversal(rootNode.rightChild)
+    print(rootNode.data)
+
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            print(root.value.data)
+            if (root.value.leftChild is not None):
+                customQueue.enqueue(root.value.leftChild)
+            
+            if (root.value.rightChild is not None):
+                customQueue.enqueue(root.value.rightChild)
+
+def searchBT(rootNode, nodeValue):
+    if not rootNode:
+        return "The BT does not exist"
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.value.data == nodeValue:
+                return "Success"
+            if (root.value.leftChild is not None):
+                customQueue.enqueue(root.value.leftChild)
+            
+            if (root.value.rightChild is not None):
+                customQueue.enqueue(root.value.rightChild)
+        return "Not found"
+
+def insertNodeBT(rootNode, newNode):
+    if not rootNode:
+        rootNode = newNode
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.value.leftChild is not None:
+                customQueue.enqueue(root.value.leftChild)
+            else:
+                root.value.leftChild = newNode
+                return "Successfully Inserted"
+            if root.value.rightChild is not None:
+                customQueue.enqueue(root.value.rightChild)
+            else:
+                root.value.rightChild = newNode
+                return "Successfully Inserted"
+
+def getDeepestNode(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if (root.value.leftChild is not None):
+                customQueue.enqueue(root.value.leftChild)
+            
+            if (root.value.rightChild is not None):
+                customQueue.enqueue(root.value.rightChild)
+        deepestNode = root.value
+        return deepestNode
+
+def deleteDeepestNode(rootNode, dNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.value is dNode:
+                root.value = None
+                return
+            if root.value.rightChild:
+                if root.value.rightChild is dNode:
+                    root.value.rightChild = None
+                    return
+                else:
+                    customQueue.enqueue(root.value.rightChild)
+            if root.value.leftChild:
+                if root.value.leftChild is dNode:
+                    root.value.leftChild = None
+                    return
+                else:
+                    customQueue.enqueue(root.value.leftChild)
+
+def deleteNodeBT(rootNode, node):
+    if not rootNode:
+        return "The BT does not exist"
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if root.value.data == node:
+                dNode = getDeepestNode(rootNode)
+                root.value.data = dNode.data
+                deleteDeepestNode(rootNode, dNode)
+                return "The node has been successfully deleted"
+            if (root.value.leftChild is not None):
+                customQueue.enqueue(root.value.leftChild)
+            
+            if (root.value.rightChild is not None):
+                customQueue.enqueue(root.value.rightChild)
+        return "Failed to delete"
+
+def deleteBT(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "The BT has been successfully deleted" 
+
+inOrderTraversal(newBT)
 ```
-O(N)
+
+---
+
+### Using Python List
+1. **Insertion**: Inserts at the next available position.
+
+   ```python
+   def insertNode(self, value):
+       if self.lastUsedIndex + 1 == self.maxSize:
+           return "The Binary Tree is full"
+       self.customList[self.lastUsedIndex + 1] = value
+       self.lastUsedIndex += 1
+   ```
+
+2. **Search**: Linear search through the list.
+
+   ```python
+   def searchNode(self, nodeValue):
+       for i in range(len(self.customList)):
+           if self.customList[i] == nodeValue:
+               return "Success"
+       return "Not found"
+   ```
+
+3. **Deletion**: Replaces the node with the last element, then removes the last element.
+
+   ```python
+   def deleteNode(self, value):
+       for i in range(1, self.lastUsedIndex + 1):
+           if self.customList[i] == value:
+               self.customList[i] = self.customList[self.lastUsedIndex]
+               self.customList[self.lastUsedIndex] = None
+               self.lastUsedIndex -= 1
+   ```
+
+4. **Complete Implementation**:
+```python
+class BinaryTree:
+    def __init__(self, size):
+        self.customList = size * [None]
+        self.lastUsedIndex = 0
+        self.maxSize = size
+    
+    def insertNode(self, value):
+        if self.lastUsedIndex + 1 == self.maxSize:
+            return "The Binary Tree is full"
+        self.customList[self.lastUsedIndex+1] = value
+        self.lastUsedIndex += 1
+        return "The value has been successfully inserted"
+
+    def searchNode(self, nodeValue):
+        for i in range(len(self.customList)):
+            if self.customList[i] == nodeValue:
+                return "Success"
+        return "Not found"
+    
+    def preOrderTraversal(self, index):
+        if index > self.lastUsedIndex:
+            return
+        print(self.customList[index])
+        self.preOrderTraversal(index*2)
+        self.preOrderTraversal(index*2 + 1)
+
+    def inOrderTraversal(self, index):
+        if index > self.lastUsedIndex:
+            return
+        self.inOrderTraversal(index*2)
+        print(self.customList[index])
+        self.inOrderTraversal(index*2+1)
+    
+    def postOrderTraversal(self, index):
+        if index > self.lastUsedIndex:
+            return
+        self.postOrderTraversal(index*2)
+        self.postOrderTraversal(index*2+1)
+        print(self.customList[index])
+    
+    def levelOrderTraversal(self, index):
+        for i in range(index, self.lastUsedIndex+1):
+            print(self.customList[i])
+    
+    def deleteNode(self, value):
+        if self.lastUsedIndex == 0:
+            return "There is not any node to delete"
+        for i in range(1, self.lastUsedIndex+1):
+            if self.customList[i] == value:
+                self.customList[i] = self.customList[self.lastUsedIndex]
+                self.customList[self.lastUsedIndex] = None
+                self.lastUsedIndex -= 1
+                return "The node has been successfully deleted"
+    
+    def deleteBT(self):
+       self.customList = None
+       return "The BT has been successfully deleted"
+
+    
+ 
+
+newBT = BinaryTree(8)
+newBT.insertNode("Drinks")
+newBT.insertNode("Hot")
+newBT.insertNode("Cold")
+newBT.insertNode("Tea")
+newBT.insertNode("Coffee")
+
+print(newBT.deleteBT())
+
+newBT.levelOrderTraversal(1)
 ```
 
-##### Space Complexity
+---
 
-- The space complexity is determined by the depth of the recursion, which is equal to the height of the tree (**H**).
-  - **Best case** (balanced tree): The height of the tree is **log N**, so the space complexity is:
-    ```
-    O(log N)
-    ```
-  - **Worst case** (completely skewed tree, like a linked list): The height of the tree is **N**, so the space complexity is:
-    ```
-    O(N)
-    ```
+## Time and Space Complexity
 
-##### Summary
-
-- **Time complexity**: `O(N)` where **N** is the number of nodes.
-- **Space complexity**: `O(H)`, where **H** is the height of the tree. In the worst case, **H = N**; in the best case (balanced tree), **H = log N**.
+![alt text](img/image-14.png)
 
 
 
+## Binary Search Tree (BST)
+
+### What is a Binary Search Tree?
+- A **Binary Search Tree (BST)** is a specialized type of **Binary Tree** with the following additional properties:
+  1. **Left Subtree**: All nodes in the left subtree have values less than or equal to the parent node.
+  2. **Right Subtree**: All nodes in the right subtree have values greater than the parent node.
+
+#### Example:
+```
+         70
+       /    \
+     50      90
+    /  \    /  \
+   30   60 80  100
+  /  \
+ 20  40
+```
+
+#### Why Do We Need a Binary Search Tree?
+- BSTs provide faster operations like **search**, **insertion**, and **deletion** compared to unsorted linear data structures.
+- Instead of sequentially traversing all elements, the BST's structure allows operations to reduce the search space by half at each step.
+
+---
+
+### Operations on Binary Search Tree (BST)
+
+#### 1. **Insertion**
+- A node is inserted based on the BST properties:
+  - If the new value is less than or equal to the current node, it is placed in the left subtree.
+  - Otherwise, it is placed in the right subtree.
+
+##### Code:
+```python
+def insertNode(rootNode, nodeValue):
+    if rootNode.data == None:
+        rootNode.data = nodeValue
+    elif nodeValue <= rootNode.data:
+        if rootNode.leftChild is None:
+            rootNode.leftChild = BSTNode(nodeValue)
+        else:
+            insertNode(rootNode.leftChild, nodeValue)
+    else:
+        if rootNode.rightChild is None:
+            rootNode.rightChild = BSTNode(nodeValue)
+        else:
+            insertNode(rootNode.rightChild, nodeValue)
+    return "The node has been successfully inserted"
+```
+
+---
+
+#### 2. **Search**
+- Searches the BST by recursively comparing the target value with the current node:
+  - Move to the left subtree if the target is less than the current node.
+  - Move to the right subtree if it is greater.
+
+##### Code:
+```python
+def searchNode(rootNode, nodeValue):
+    if rootNode.data == nodeValue:
+        print("The value is found")
+    elif nodeValue < rootNode.data:
+        if rootNode.leftChild:
+            searchNode(rootNode.leftChild, nodeValue)
+        else:
+            print("The value is not found")
+    else:
+        if rootNode.rightChild:
+            searchNode(rootNode.rightChild, nodeValue)
+        else:
+            print("The value is not found")
+```
+
+---
+
+#### 3. **Traversal**
+- **Pre-order Traversal**: Visit root, left subtree, right subtree.
+- **In-order Traversal**: Visit left subtree, root, right subtree.
+- **Post-order Traversal**: Visit left subtree, right subtree, root.
+- **Level-order Traversal**: Visit nodes level by level.
+
+##### Code:
+```python
+def preOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    print(rootNode.data)
+    preOrderTraversal(rootNode.leftChild)
+    preOrderTraversal(rootNode.rightChild)
+
+def inOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    inOrderTraversal(rootNode.leftChild)
+    print(rootNode.data)
+    inOrderTraversal(rootNode.rightChild)
+
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    postOrderTraversal(rootNode.leftChild)
+    postOrderTraversal(rootNode.rightChild)
+    print(rootNode.data)
+
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            print(root.value.data)
+            if root.value.leftChild is not None:
+                customQueue.enqueue(root.value.leftChild)
+            if root.value.rightChild is not None:
+                customQueue.enqueue(root.value.rightChild)
+```
+
+---
+
+#### 4. **Deletion**
+- Deletes a node in the BST based on three cases:
+  1. The node is a **leaf** (no children).
+  2. The node has **one child**.
+  3. The node has **two children**: Replace with the **in-order successor** (smallest value in the right subtree).
+
+##### Code:
+```python
+def minValueNode(bstNode):
+    current = bstNode
+    while current.leftChild:
+        current = current.leftChild
+    return current
+
+def deleteNode(rootNode, nodeValue):
+    if rootNode is None:
+        return rootNode
+    if nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue > rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        if rootNode.rightChild is None:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+        temp = minValueNode(rootNode.rightChild)
+        rootNode.data = temp.data
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+    return rootNode
+```
+
+---
+
+#### 5. **Delete Entire BST**
+- Deletes all nodes by setting the root node and its children to `None`.
+
+##### Code:
+```python
+def deleteBST(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "The BST has been successfully deleted"
+```
+
+---
+
+### Time and Space Complexity of BST
+![alt text](img/image-15.png)
+
+---
+
+### Complete Example
+```python
+# Creating and operating on a BST
+newBST = BSTNode(None)
+insertNode(newBST, 70)
+insertNode(newBST, 50)
+insertNode(newBST, 90)
+insertNode(newBST, 30)
+insertNode(newBST, 60)
+insertNode(newBST, 80)
+insertNode(newBST, 100)
+insertNode(newBST, 20)
+insertNode(newBST, 40)
+
+print("In-order Traversal:")
+inOrderTraversal(newBST)
+
+print("\nDeleting a node (50):")
+deleteNode(newBST, 50)
+inOrderTraversal(newBST)
+
+print("\nDeleting entire BST:")
+print(deleteBST(newBST))
+```
 
 
+Here is the consolidated Markdown file with theory and code for the **Graph** section:
 
 
+## Graph Data Structure and Algorithms
 
+### What is a Graph?
+- A **Graph** is a nonlinear data structure consisting of:
+  1. **Vertices** (or Nodes): Represented as circular objects.
+  2. **Edges**: Represented as lines/arcs connecting the vertices.
+  
+#### Formal Definition:
+A graph \( G \) consists of:
+- \( V \): A finite set of vertices (nodes).
+- \( E \): A set of edges connecting pairs of vertices.
 
+#### Example:
+```
+    A ------ B
+    |      / |
+    |    /   |
+    |  /     |
+    C -------D
+```
 
+---
 
+### Why Do We Need Graphs?
+- **Real-life Applications**:
+  - Represent networks (e.g., city paths, telephone circuits, or computer networks).
+  - Used in social networks (e.g., LinkedIn, Facebook).
+  - Shortest path problems in maps.
+  
+- **Tree vs Graph**:
+  - A tree is a special type of graph that is **acyclic**.
+  - Graphs allow cycles, enabling modeling of more complex relationships.
 
+---
 
+### Graph Terminology
+1. **Vertices**: Nodes of the graph.
+2. **Edges**: Connections between vertices.
+3. **Unweighted Graph**: No weight assigned to edges.
+4. **Weighted Graph**: Weight assigned to edges (e.g., cost, distance, time).
+5. **Directed Graph**: Edges have a specific direction.
+6. **Undirected Graph**: Edges have no direction.
+7. **Cyclic Graph**: Contains at least one cycle.
+8. **Acyclic Graph**: Contains no cycles.
+9. **Tree**: A special case of a **Directed Acyclic Graph (DAG)**.
 
+---
+
+### Types of Graphs
+1. **Unweighted and Undirected**: No weights; edges can be traversed in either direction.
+2. **Unweighted and Directed**: No weights; edges have specific directions.
+3. **Positive-Weighted and Undirected**: Positive weights with undirected edges.
+4. **Positive-Weighted and Directed**: Positive weights with directed edges.
+5. **Negative-Weighted and Undirected**: Includes negative weights with undirected edges.
+6. **Negative-Weighted and Directed**: Includes negative weights with directed edges.
+
+---
+
+### Graph Representation
+
+#### 1. **Adjacency Matrix**
+- **Definition**: A 2D array where rows and columns represent vertices, and a cell value represents the presence (and possibly weight) of an edge.
+- **Example** (Undirected Graph):
+  ```
+    A--B
+    |  |
+    C--D
+  ```
+  Adjacency Matrix:
+  ```
+    A B C D
+  A  0 1 1 0
+  B  1 0 0 1
+  C  1 0 0 1
+  D  0 1 1 0
+  ```
+
+- **Advantages**:
+  - Easy to implement and understand.
+  - Efficient for dense graphs.
+
+- **Disadvantages**:
+  - Memory inefficient for sparse graphs.
+
+---
+
+#### 2. **Adjacency List**
+- **Definition**: A dictionary where:
+  - Keys represent vertices.
+  - Values represent a list of adjacent vertices.
+
+- **Example**:
+  ```
+    A--B
+    |  |
+    C--D
+  ```
+  Adjacency List:
+  ```python
+  {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'D'],
+    'D': ['B', 'C']
+  }
+  ```
+
+- **Advantages**:
+  - Memory efficient for sparse graphs.
+  - Easy to iterate through neighbors.
+
+- **Disadvantages**:
+  - Slightly slower for dense graphs compared to adjacency matrix.
+
+---
+
+### Implementing a Graph in Python
+
+#### Graph Class
+```python
+class Graph:
+    def __init__(self):
+        self.adjacency_list = {}
+    
+    def add_vertex(self, vertex):
+        if vertex not in self.adjacency_list.keys():
+            self.adjacency_list[vertex] = []
+            return True
+        return False
+    
+    def print_graph(self):
+        for vertex in self.adjacency_list:
+            print(vertex, ":", self.adjacency_list[vertex])
+    
+    def add_edge(self, vertex1, vertex2):
+        if vertex1 in self.adjacency_list.keys() and vertex2 in self.adjacency_list.keys():
+            self.adjacency_list[vertex1].append(vertex2)
+            self.adjacency_list[vertex2].append(vertex1)
+            return True
+        return False
+    
+    def remove_edge(self, vertex1, vertex2):
+        if vertex1 in self.adjacency_list.keys() and vertex2 in self.adjacency_list.keys():
+            try:
+                self.adjacency_list[vertex1].remove(vertex2)
+                self.adjacency_list[vertex2].remove(vertex1)
+            except ValueError:
+                pass
+            return True
+        return False
+    
+    def remove_vertex(self, vertex):
+        if vertex in self.adjacency_list.keys():
+            for other_vertex in self.adjacency_list[vertex]:
+                self.adjacency_list[other_vertex].remove(vertex)
+            del self.adjacency_list[vertex]
+            return True
+        return False
+```
+
+---
+
+### Example Usage
+```python
+# Creating a graph
+my_graph = Graph()
+my_graph.add_vertex("A")
+my_graph.add_vertex("B")
+my_graph.add_vertex("C")
+my_graph.add_vertex("D")
+
+# Adding edges
+my_graph.add_edge("A", "B")
+my_graph.add_edge("A", "C")
+my_graph.add_edge("A", "D")
+my_graph.add_edge("B", "C")
+my_graph.add_edge("C", "D")
+
+# Printing the graph
+my_graph.print_graph()
+
+# Removing a vertex
+my_graph.remove_vertex("A")
+print("After remove...")
+my_graph.print_graph()
+```
+
+---
+
+### Choosing Representation
+1. **Adjacency Matrix**:
+   - Use for **dense graphs** (many edges).
+   - Suitable for complete graphs.
+2. **Adjacency List**:
+   - Use for **sparse graphs** (few edges).
+   - More memory-efficient.
+
+---
+
+### Key Points
+- Graphs are versatile and widely used in real-life applications such as navigation systems, social networks, and network design.
+- Choosing the right representation (Adjacency Matrix vs. Adjacency List) depends on the graph's density.
+- Graph algorithms often build upon fundamental graph concepts, making understanding these basics essential.
+
+---
+## Graph Traversal: BFS and DFS
+
+### What is Graph Traversal?
+Graph traversal is the process of visiting every vertex in a graph. Traversal is used to explore the structure of the graph, examine relationships between nodes, and solve problems like finding the shortest path.
+
+#### Example Graph
+```
+    A ---- B
+    |      |
+    C ---- D ---- E
+```
+
+Two primary graph traversal methods:
+1. **Breadth-First Search (BFS)**
+2. **Depth-First Search (DFS)**
+
+---
+
+### Breadth-First Search (BFS)
+
+#### Definition:
+BFS is an algorithm that starts at an arbitrary node (called the root) and explores all its neighbors at the current depth before moving to nodes at the next depth level.
+
+#### How It Works:
+- Start from the root node.
+- Visit all neighboring nodes (level-by-level).
+- Use a **queue** to track nodes to visit next.
+
+#### Time Complexity:
+- **O(V + E)** where \(V\) is the number of vertices and \(E\) is the number of edges.
+
+#### Space Complexity:
+- **O(V)** due to storing nodes in the visited set and the queue.
+
+#### Use Case:
+- When the target node is close to the starting point.
+
+---
+
+### Depth-First Search (DFS)
+
+#### Definition:
+DFS is an algorithm that starts at an arbitrary node (called the root) and explores as far as possible along each branch before backtracking.
+
+#### How It Works:
+- Start from the root node.
+- Go as deep as possible along each path before backtracking.
+- Use a **stack** to track nodes.
+
+#### Time Complexity:
+- **O(V + E)** where \(V\) is the number of vertices and \(E\) is the number of edges.
+
+#### Space Complexity:
+- **O(V)** due to storing nodes in the visited set and the stack.
+
+#### Use Case:
+- When the target node is buried deep in the graph.
+
+---
+### BFS vs DFS
+
+![alt text](img/image-16.png)
+
+---
+
+### BFS Implementation
+
+#### Code
+```python
+from collections import deque
+
+class Graph:
+    def __init__(self):
+        self.adjacency_list = {}
+    
+    def add_vertex(self, vertex):
+        if vertex not in self.adjacency_list.keys():
+            self.adjacency_list[vertex] = []
+            return True
+        return False
+    
+    def add_edge(self, vertex1, vertex2):
+        if vertex1 in self.adjacency_list.keys() and vertex2 in self.adjacency_list.keys():
+            self.adjacency_list[vertex1].append(vertex2)
+            self.adjacency_list[vertex2].append(vertex1)
+            return True
+        return False
+    
+    def bfs(self, start_vertex):
+        visited = set()
+        queue = deque([start_vertex])
+        visited.add(start_vertex)
+        
+        while queue:
+            current = queue.popleft()
+            print(current, end=" ")
+            
+            for neighbor in self.adjacency_list[current]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+
+# Example Usage
+my_graph = Graph()
+my_graph.add_vertex("A")
+my_graph.add_vertex("B")
+my_graph.add_vertex("C")
+my_graph.add_vertex("D")
+my_graph.add_vertex("E")
+my_graph.add_edge("A", "B")
+my_graph.add_edge("A", "C")
+my_graph.add_edge("B", "E")
+my_graph.add_edge("C", "D")
+my_graph.add_edge("D", "E")
+
+print("BFS Traversal:")
+my_graph.bfs("A")
+```
+
+---
+
+### DFS Implementation
+
+#### Code
+```python
+class Graph:
+    # Other methods...
+
+    def dfs(self, start_vertex):
+        visited = set()
+        stack = [start_vertex]
+        
+        while stack:
+            current = stack.pop()
+            if current not in visited:
+                print(current, end=" ")
+                visited.add(current)
+                
+                for neighbor in self.adjacency_list[current]:
+                    if neighbor not in visited:
+                        stack.append(neighbor)
+
+# Example Usage
+my_graph = Graph()
+my_graph.add_vertex("A")
+my_graph.add_vertex("B")
+my_graph.add_vertex("C")
+my_graph.add_vertex("D")
+my_graph.add_vertex("E")
+my_graph.add_edge("A", "B")
+my_graph.add_edge("A", "C")
+my_graph.add_edge("B", "E")
+my_graph.add_edge("C", "D")
+my_graph.add_edge("D", "E")
+
+print("DFS Traversal:")
+my_graph.dfs("A")
+```
+
+---
+
+## BFS and DFS Comparison Example
+- **Graph**:
+  ```
+      A ---- B
+      |      |
+      C ---- D ---- E
+  ```
+- **BFS Output**: `A B C D E`
+- **DFS Output**: `A C D E B`
+
+---
+
+### Key Insights
+- **BFS** uses **queue** for level-by-level exploration.
+- **DFS** uses **stack** for depth-first exploration.
+- Both algorithms have the same time complexity, but their applications differ based on the problem domain.
 
 ## SORTING
 It refers to arranging data in a given order
@@ -1266,7 +2163,7 @@ It refers to arranging data in a given order
 
 **How to classify the sorting operations**
 
-![alt text](image-6.png)
+![alt text](img/image-6.png)
 
 -   **In-Place**: Doesn't require extra space for sorting. Eg. Bubble Sort
 -   **Out-Place**: Sorting requires extra space. Eg. Merge Sort
@@ -1379,7 +2276,7 @@ It refers to arranging data in a given order
 #### Pseudo Code for Linear Search
 
 
-![alt text](image-8.png)
+![alt text](img/image-8.png)
 
 
 ### Binary Search
@@ -1391,7 +2288,7 @@ It refers to arranging data in a given order
 
 #### Pseudo Code for Binary Search
 
-![alt text](image-9.png)
+![alt text](img/image-9.png)
 
 ### Binary Search (with Recursion)
 
