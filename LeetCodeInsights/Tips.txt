@@ -384,4 +384,118 @@ For eg:
         while counter<=num:
             yield counter
             counter+=1
+------------------------------------------------------------------------------------------------
+#### Detailed Explanation:
 
+- **`float('-inf')`:**
+  - `float('-inf')` represents negative infinity in Python.
+  - It's a special floating-point value that is smaller than any other number.
+  
+- **`max1, max2 = float('-inf'), float('-inf')`:**
+  - This is a tuple assignment in Python, where `max1` is set to `float('-inf')` and `max2` is also set to `float('-inf')`.
+
+--------------------------------------------------------------------------------------------
+dict.fromkeys() is a class method in Python used to create a new dictionary from a given sequence of keys, with all keys set to a specified value.
+
+Syntax:
+python
+Copy code
+dict.fromkeys(sequence, value=None)
+Parameters:
+sequence: A sequence of elements which will become the keys of the new dictionary. This could be a list, tuple, or any iterable.
+value (optional): The value that all keys in the dictionary will be assigned. If not provided, the default value will be None.
+
+
+
+------------------------------------------------------------------------
+--Finding common alphabet in an array of strings. Duplicated should be included
+
+class Solution:
+
+    def commonChars(self, words: List[str]) -> List[str]:
+        words_size = len(words)
+        result = []
+
+        # Initialize common_character_counts with the characters from the first word
+        common_character_counts = collections.Counter(words[0])
+
+        for i in range(1, words_size):
+            # Count characters in the current word
+            current_character_counts = collections.Counter(words[i])
+
+            # Update the common character counts to keep the minimum counts
+            for letter in common_character_counts.keys():
+                common_character_counts[letter] = min(
+                    common_character_counts[letter],
+                    current_character_counts[letter],
+                )
+
+        # Collect the common characters based on the final counts
+        for letter, count in common_character_counts.items():
+            for _ in range(count):
+                result.append(letter)
+
+        return result
+
+#####################More about Collections.counter()
+
+What is Counter?
+Counter is a subclass of dict specifically designed for counting hashable objects. 
+It takes an iterable (like a string or list) and returns a dictionary where the keys 
+are the unique elements of the iterable, and the values are the counts of those elements.
+
+words = ["hello", "world", "python"]
+
+from collections import Counter
+result = Counter(words[0])
+
+#Output
+The time complexity of collections.Counter() is 𝑂(𝑛), where n is the number of elements 
+in the input iterable.
+
+#current_character_counts[letter] will not raise a "key not found" error because of how collections.Counter works.
+
+#How collections.Counter Handles Missing Keys
+collections.Counter is a subclass of dict, but it behaves slightly differently when accessing keys that are not present:
+
+If you access a key that doesn't exist in the Counter, it returns 0 instead of raising a KeyError.
+
+
+--------------------------------------------------------------------
+# Lists
+a1 = ['21.Indiana', '20.Illinois', '11.California', '7.Alabama']
+a2 = ['Indiana', 'Illinois', 'California']
+
+# Creating a new list with values from a1 that contain any of the values in a2
+filtered_list = [item for item in a1 if any(state in item for state in a2)]
+
+# Output the filtered list
+print(filtered_list)
+
+------------------------------------------------------------------
+#find function in string
+<sample_string>.find('d') will return -1 incase 'd' is not there in sample_string
+
+
+
+----------------------------------------------------------------------------
+#REGULAR EXPRESSION
+
+In the context of the re.search() function from Python's re module, the .group() method is used to access the parts of the string that matched the pattern specified by the regular expression.
+
+Understanding group() in re.search():
+
+re.search(pattern, string):
+This function searches the string for the first occurrence of the pattern.
+It returns a match object if the pattern is found; otherwise, it returns None.
+
+Match Object:
+When re.search() finds a match, it returns a match object.
+The match object contains information about the matched text and allows you to access specific parts of it using the .group() method.
+
+
+.group(n):
+
+group(0): Returns the entire matched string.
+group(1), group(2), etc.: Returns the content captured by the corresponding capturing group in the regular expression.
+Capturing groups are parts of the pattern enclosed in parentheses. They allow you to extract specific portions of the matched string.

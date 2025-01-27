@@ -19,7 +19,7 @@
 3. Drop the constants. So, `O(2n)` is actually `O(n)`
 4. Drop non-dominant terms. So, `O(n^2 + n)` is actually `O(n^2)`
 5. Wherever the number of elements in your array get halved during search then it will take **`"log of n to the base 2" aka LogN`** steps to search our target element
-6. Order: **`O(1) << O(log N) << O(N) << O(N^2)`**
+6. Order: **`O(1) << O(log N) << O(N) << O(Nlog(N)) << O(N^2)`**
 7. Space complexity states how much memory in the worst case is needed at any point in the algorithm.
 8. Recursive algos consume high memory as we have to remember numbers in each recursive iteration.
 9. Add vs multiply for time complexities. If you have two input parameters like a,b. Then you can have O(a+b) or O(a*b) as the time complexities.
@@ -163,7 +163,7 @@
 19. Functions of lists:
     <br>max(myList): return the max value in list
     <br>min(myList): return the min value in list
-    <br>sum(myList): return the sum of all values in list
+    <br>sum(myList): return the sum of all values in list. This has a time complexity of O(N) since it iterates through the entire string and computes the sum
     <br>sum(myList)/len(myList): this will give the average of all the elements in the list
 20. The **.shuffle()** method in Python is used to randomly shuffle the elements of a list. It modifies the original list in place and does not return anything (i.e., it returns None).
     ```python
@@ -175,7 +175,7 @@
     ```
 21. The **all() function** in Python returns True if all elements of an iterable are true (or if the iterable is empty), otherwise it returns False.
         <br> For eg. all(iterable)
-
+22. The time complexity of sorting a Python array or list if **O(nLog(n))**
 
 ### STRINGS:
 1.  If you use list(a) : where a is a string, then this will result in a list with each element being an alphabet of the string
@@ -216,6 +216,7 @@
 1.  new_list = [new_item for item in list] <br>
     For eg. new_list=[x**2 for x in prev_list]
 2.  **x^2** doesn't calculate the square of x. Instead, it calculates the bitwise XOR of x and 2
+3. *grid: 
 
 ##### CONDITIONAL LIST COMPREHENSION: 
 1.  new_list=[new_item for item in list if condition] <br>
@@ -224,14 +225,15 @@
     new_list=[expression1 if condition else expression2 for item in iterable] <br>
     For eg. ```python new_list=[x**2 if x % 2 == 0 else 0 for x in nums] ```
 3.  **.isalpha()** method is a built-in function in Python used to check whether all characters in a string are alphabetic characters (i.e., letters)
-        <br><br> For eg. string1 = "HelloWorld"
-        <br>        print(string1.isalpha())  # Output: True
-<br>
-        <br>        string2 = "Hello World"
-        <br>        print(string2.isalpha())  # Output: False
+    ```python
+        #For eg. string1 = "HelloWorld"
+        print(string1.isalpha())  # Output: True
 
-3.  You can write if else statement in comprehesion format as well:
-    <br> For eg. return parm if parm>0 else 'negative number'
+        string2 = "Hello World"
+        print(string2.isalpha())  # Output: False
+    ```
+3.  You can write if-else statement in comprehesion format as well:
+    <br> For eg. `return parm if parm>0 else 'negative number'`
 
 ## SETS:
 Sets in Python are unordered collections of unique elements. They have several unique properties:
@@ -272,22 +274,36 @@ Some of the commonly used methods of sets in Python include:
 ## DICTIONARY:
 1.  A dictionary is a collection that is unordered,changeable and indexed
 2.  Python Dictionary **get()** Method return the value for the given key if present in the dictionary. If not, then it will return None (if get() is used with only one argument)<br>
-                For eg. Dict.get(key, default=None)
+    ```python
+            #For eg. 
+            
+            Dict.get(key, default=None)
+    ```
 3.  Dictionary in Python are implemented in the backend using **HashMaps**
 4.  To initialize a dictionary:
-                    <br> my_dict=dict()
-                    <br> my_dict={} (another way)
-                <br> TC and SC is O(1). Only memory for initial hashtable is created
+    ```python
+                        my_dict=dict()
+                        my_dict={} (another way)
+    ```
+    TC and SC is O(1). Only memory for initial hashtable is created
+
 5.  Examples of **initialization**:
-                    <br> eng_sp=dict(one='uno',two='dos',three='trees')
-                    <br> print(eng_sp) --> this will print the keys as string
-                    <br> **This is because you use the dict() function with keyword arguments, the keywords (such as one, two, and three) are automatically treated as strings representing the keys of the dictionary.**
+    ```python
+        eng_sp=dict(one='uno',two='dos',three='trees')
+                    
+        print(eng_sp) --> this will print the keys as string
+    ```
+    **This is because you use the dict() function with keyword arguments, the keywords (such as one, two, and three) are automatically treated as strings representing the keys of the dictionary.**
+
 6.  Another example of **Initialization**:
-                    <br> eng_sp2={'one':'uno','two':'dos','three':'tres'}
+
+    `eng_sp2={'one':'uno','two':'dos','three':'tres'}`
 7.  **TC and OC** of creating a dict is O(N)
-8.  **How to initialize a dict using tuple:** <br>
-    my_list_of_tuples=[('key1','value1'),('key2','value2'),('key3','value3')] <br>
-    my_dict=dict(my_list_of_tuples)<br>
+8.  **How to initialize a dict using tuple:**
+    ```python
+    my_list_of_tuples=[('key1','value1'),('key2','value2'),('key3','value3')]
+    my_dict=dict(my_list_of_tuples)
+    ```
 9.  Since a dictionary is actually implemented through a hashmap in the backend, so the under the hood assembly usually has three part: Key, Hashfunction, index and (Key,value) <br>
 
     ![alt text](DictInMemory.png)
@@ -960,4 +976,449 @@ Some of the commonly used methods of sets in Python include:
     -   get()
     -   put()
     .....rest of the methods are similar to Queue from Queue module
+
+
+## RECURSION
+
+### Basic Definition:
+1.  Performing the same operation multiple times with different inputs
+2.  In every step we try smaller inputs to make the problem smaller
+3.  Base condition is need is needed to stop the recursion, otherwise infinite loop will occur
+
+### Where to use recursion:
+1.  If you can divide the problem into similar sub problems
+2.  Design an algorithm to compute the nth....
+3.  Write a code to list the nth...
+4.  Implement a method to compute all....
+
+### Used in which areas?
+1.  It is heavily used in data structures like **trees and graphs**
+2.  Used in many algos (including divide and conquer, greedy and dynamic programming)
+
+### How Recursion works?
+1.  There are two conditions to be kept in mind:
+    -   **A method calls itself**
+    -   **Exit from infinite loop**
+    ```python
+        def recursionMethod(parameters):
+            if exit from condition satisfied:
+                return some value
+            else:
+                recusionMethod(modified parameter)
+    ```
+2.  As we keep going deeper into that recursion tree the **upper layer of methods start getting inserted into the stack memory**
+3.  When you are at the bottom most layer of your recursion tree, your stack will have **n-1 methods** in it. (where n is the total number of layers in your recursion tree)
+4.  When the code starts coming out of your recursion tree then the methods **will be called out of stack memory. The methods will be popped out from Stack memory as per the LIFO rule**
+
+### Recursive v/s Iterative Solutions:
+1.  Recursion code is more **neat** and contains few line of code
+2.  Exit from Recursion is done using **a condition** where as in Iteration exit happens using a **a control variable**
+3.  Infinite Recursion can cause system crash whereas Infinite Iteration utilizes CPU cycles
+4.  Recursion is **not space efficient** whereas Iterative algo is.
+
+
+![alt text](image-10.png)
+
+
+### When to avoid Recursion??
+ ![alt text](image-11.png)
+
+
+### How to write a Recursive function?
+1.  Find the recursive case.
+    For eg. in case of factorial:` n! = n*(n-1)!`
+2.  Find the base case.
+    For eg. in case of factorial: `1 if n in [0,1]`
+3.  Unintentional case - the constraint
+    The function will reach the base case only if the input is within the constraints
+    For eg. in case of factorial: `input should be non-negative`
+    ```
+    #checking for constraint
+    assert condition, optional_message
+    ```
+    ```python
+    #incase of factorial
+    assert n>=0 and int(n)==n, 'The number must be a positive integer only!'
+    ```
+### Time and Space complexity of Recursive function
+-   **Single call in a function pass**: 
+    -   **TC** is O(N)
+    -   **SC** is O(N)
+-   **Double call in a function pass**
+    -   **TC** is 2^N
+    -   **SC** is O(N)
+
+
+**Tip: In order to change the recursion depth in VS code:**
+```
+import sys
+sys.setrecursionlimit(1000) #here 1000 is the depth of your recursion
+```
+
+### MASTER THEOREM: 
+
+The **Master Theorem** is a tool used to analyze the time complexity of recursive algorithms, especially when the recurrence relation fits a particular form. It is commonly used in algorithms like merge sort, binary search trees, and divide-and-conquer problems.
+
+### The General Form of the Recurrence Relation
+The Master Theorem applies to recurrence relations of the form:
+
+$$ T(n) = a \cdot T\left(\frac{n}{b}\right) + O(n^d) $$
+
+where:
+- **`a`** ≥ 1: The number of subproblems the original problem is divided into.
+- **`b`** > 1: The factor by which the problem size is reduced in each recursive call.
+- **`O(n^d)`**: The time complexity of the "conquer" or "combine" step, where `d` is a constant.
+
+### The Master Theorem Cases
+The Master Theorem provides three cases that determine the overall time complexity:
+
+1. **Case 1:**
+   - If **`d < log_b(a)`**, then:
+     $$ T(n) = \Theta(n^{\log_b(a)}) $$
+   - **Explanation:** When the work done at each level decreases faster than the number of subproblems, the complexity is dominated by the number of recursive calls.
+   - **Example:** `T(n) = 2T(n/2) + O(1)` results in `O(n)` because `d = 0` and `log_2(2) = 1`.
+
+2. **Case 2:**
+   - If **`d = log_b(a)`**, then:
+     $$ T(n) = \Theta(n^{\log_b(a)} \cdot \log n) $$
+   - **Explanation:** When the work done at each level is balanced by the number of subproblems, the overall complexity will include a logarithmic factor.
+   - **Example:** `T(n) = 2T(n/2) + O(n)` results in `O(n log n)` because `d = 1` and `log_2(2) = 1`.
+
+3. **Case 3:**
+   - If **`d > log_b(a)`**, then:
+     $$ T(n) = \Theta(n^d) $$
+   - **Explanation:** When the work done at each level increases faster than the number of subproblems, the complexity is dominated by the work done at the top level.
+   - **Example:** `T(n) = 2T(n/2) + O(n^2)` results in `O(n^2)` because `d = 2` and `log_2(2) = 1`.
+
+### Applying Master Theorem to Merge Sort:
+For merge sort, the recurrence relation is:
+$$T(n) = 2T(n/2) + O(n)$$
+- **`a = 2`** (two subproblems),
+- **`b = 2`** (each subproblem is half the size of the original),
+- **`d = 1`** (linear time to merge the subarrays).
+
+Here, `log_2(2) = 1`, which matches `d = 1`. So, it falls under **Case 2** of the Master Theorem, resulting in:
+$$
+T(n) = O(n \log n)
+$$
+
+### Summary
+The Master Theorem is a helpful tool to quickly determine the time complexity of recursive functions when they fit a specific pattern. Understanding how `a`, `b`, and `d` relate allows you to apply the appropriate case and find the overall complexity.
+
+
+## TREES
+1.  A tree is a non-linear data structure 
+2.  There is hirarchial relationship between its elements without having any cycle
+3.  It is basically reversed from rela life trees
+4.  Each node has two components:
+    -   Data
+    -   Reference to subsequent nodes
+
+#### Why do we need Tree datastructure:
+1.  Allow quicker and easier access since this is non-linear
+2.  To store info that has hirarchial data structure
+3.  Some Trees have faster search than linear data structures like Linked List, list etc.
+
+
+#### Terminology:
+1.  **Root**: _top node without parent_
+2.  **Edge**: _a link betwen parent and child_
+3.  **Leaf**: _a node without children_
+4.  **sibling**: _children with same parent_
+5.  **ancestor**: _parent,grandparent,great grandparent of a node_
+6.  **depth of node**: _a length of the path from root to node_
+7.  **height of node**: _a length of the path from the ndoe to the deepest node_
+8.  **depth of tree**: _depth of root node_
+9.  **height of tree**: _height  of root node. Height is computed with deepest node as the refrence_
+
+
+### Binary Tree
+1.  Each node has atmost 2 children: **left** & **right**
+2.  Binary tres is a family of data structure (BST, Heap Tree, AVL, red black trees, Syntax Trees)
+
+#### Why we need Binary Tree:
+1.  Binary Trees are prerequisite for more advanced trees like BST, AVL, Red Black Trees
+
+#### Different Types of Binary Trees:
+-   **Full Binary Tree**: Each node has 0 or 2 children and not one
+-   **Perfect Binary Tree**: All non-leaf node have 2 children and they are at the same level
+-   **Complete Binary Tree**: All levels are completely filled exced the last level (leaf level)
+-   **Balanced Binary Tree**: Each leaf is not more than a certain distance from the root node than any other leaf
+
+#### Creation of Binary Tree:
+
+**There are two ways of doing this:**
+-   Linked List
+-   Python List (Array)
+
+##### Using Linked List
+1.  Each node will have three components:
+    -   Data
+    -   Left Pointer (address of left child)
+    -   Right Pointer (address of right child)
+
+
+<u>**_Following is the diargram_**</u>
+![alt text](image-12.png)
+
+
+##### Using Python List
+1.  We leave cell at index 0 a blank. This helps in making the formula calculation easier
+2.  `left` and `right` is computed using formula:
+    -   `cell[2x]`
+    -   `cell[2x+1]` 
+    _here x is the index of the parent node_
+
+3.  In order to avoid any empty cell in your list post insertion, make sure you compute the total number of nodes in your tree and intialize your list accordingly
+
+
+#### Create Binary Tree using Linked List:
+
+-   Creation of Tree
+-   Insertion of a node
+-   Deletion of a node
+-   Search for a value
+-   Traverse all nodes
+-   Deletion of tree
+
+
+**Creation of Tree**
+
+-   Tree Creation:
+
+    -   Time Complexity: O(1)
+    -   Space Complexity: O(1)
+
+**Traversal of Trees**
+
+There are two ways to traverse a tree:
+-   Depth first search
+    -   Preorder traversal
+    -   Inorder traversal
+    -   Post order traversal
+
+-   Breadth first search
+    -   Level order traversal
+
+
+#### Pre-order Traversal
+1.  Order here is: **Root >> Left >> Right**
+
+![alt text](image-13.png)
+
+
+##### Time Complexity
+
+- In **pre-order traversal**, each node in the binary tree is visited exactly once.
+- For each node, the algorithm processes it (prints its value) and makes recursive calls for both its left and right children.
+- Since the algorithm visits all **N** nodes exactly once, the total number of operations is proportional to **N**.
+
+Thus, the **time complexity** is:
+
+```
+O(N)
+```
+
+##### Space Complexity
+
+- The space complexity is determined by the depth of the recursion, which is equal to the height of the tree (**H**).
+  - **Best case** (balanced tree): The height of the tree is **log N**, so the space complexity is:
+    ```
+    O(log N)
+    ```
+  - **Worst case** (completely skewed tree, like a linked list): The height of the tree is **N**, so the space complexity is:
+    ```
+    O(N)
+    ```
+
+##### Summary
+
+- **Time complexity**: `O(N)` where **N** is the number of nodes.
+- **Space complexity**: `O(H)`, where **H** is the height of the tree. In the worst case, **H = N**; in the best case (balanced tree), **H = log N**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## SORTING
+It refers to arranging data in a given order
+
+### Types of sorting algorithms:
+
+-   Bubble Sort
+-   Selection Sort
+-   Insertion Sort
+-   Bucket Sort
+-   Merge Sort
+-   Quick Sort
+-   Heap Sort
+
+
+**How to classify the sorting operations**
+
+![alt text](image-6.png)
+
+-   **In-Place**: Doesn't require extra space for sorting. Eg. Bubble Sort
+-   **Out-Place**: Sorting requires extra space. Eg. Merge Sort
+
+-   **Stable**: If a sorting algorithm after sorting the contents does not change the sequence of similar content in which they appear, then this sorting is called stable sorting. For eg. Insertion sort
+
+-   **Unstable**: If a sorting algo after sorting the contents changes the sequence of similar content in which they appear, then it is called unstable sort. For eg. Quick Sort
+### Sorting Terminology
+
+-   **Increasing Order**
+-   **Decreasing Order**
+-   **Non-Increasing Order** (If successive element is less than or equal to its previous element in the sequence. It is seen when we have duplicate values)
+-   **Non-decreasing order** (If successive element is greater than or equal to its previous element in a sequence. It is seen when we have duplicate values)
+
+### Which algorithm to select?
+-   Stability
+-   Space Efficient
+-   Time Efficient
+
+#### Bubble Sort
+1.  Also called Sinking Sort
+2.  We repeately compare each pair of adjacent item and swap if they are in the wrong order
+3.  In one pass the last element is the greatest and **that last element is considered as fully sorted**.
+4.  You do another pass and compare adjacent elements and make the swap if required. This will make the second last element as the **second highest** and you can call the last 2 elements are **fully sorted**
+5.  You keep doing these passes until the entire array is fully sorted.
+
+**TC and SC For Bubble Sort**: O(n^2), O(1)
+
+6.  Bubble sort is used where
+    -   Space is of concern
+    -   When input is already sorted
+    -   Easy to implement
+7.  When we need to avoid:
+    -   Average time complexity of Bubble sort is very poor
+
+#### Selection Sort
+1.  This involves finding the minimum element and move it to the sorted part of the array to make unsorted part sorted
+2.  It perfrom well on short array
+3.  There is no space required while doing this sort
+4.  It requires **O(N^2)** time complexity
+5.  This algo for sorting scales very bad with large arrays
+6.  You use Selection Sort where you have insufficient memory
+7.  Where time is a concern you should avoid Selection Sort since it has quadratic time complexity
+
+
+#### Insertion Sort
+1.  Divide the array into two parts
+2.  Take first element form unsorted array and find its correct position in sorted array
+3.  The only difference that Insertion sort has from Selection sort is that in selection sort we take the **min element** from unsorted array into the sorted array position. Whereas in the insertion sort we take **any element** from the unsorted portion and place that into it's right position in the sorted poriton of your array.
+4.  Repeat until unsorted array is empty
+5.  **Time Complexity : O(N^2)**
+6.  **Space Complexity: O(1)** (since the sorting is in-place)
+7.  Main advantage of Insertion method is it's **space efficiency**
+8.  Since it's time complexity is very high, so it should not be used in case of very large arrays.
+
+
+#### Bucket Sort
+1.  Create buckets and insert array elements into those buckets
+2.  Sort the buckets individually
+3.  Merge buckets after sorting
+4.  Number of buckets are calculated like this:
+    `Number of buckets=round(Sqrt(number of elements))`
+5.  To find which element goes in which bucket:
+    `Appropriate bucket=ceil(value * number of buckets / maxValue)`
+6.  We can use any sorting algorithm to sort the buckets individually
+7.  During mergin you just have to bring the contents of buckets and append them after one another
+8.  A bucket sort implemented using **Insertion Sort** will have **O(N^2)** time complexity
+9.  Usually we implement Bucket Sort using **Quick Sort** and in that case it has a time complexity of **O(NlogN)**
+10. **Important**: We use Bucket sort when input is uniformly distributed over range. If there are any outliers then that can result in skew during distribution of data in buckets
+11. **Important**: We avoid bucket sort in situation where there is a space concern
+12. **The time complexity of bucket sort varies depending on the distribution of the input data and the sorting algorithm used for sorting each bucket.**
+13.  Incase there are **negative numbers** in the array that you want to sort then the only change is in the **Bucket allocation formula**
+
+#### Merge Sort
+1.  Merge sort is a divide and conquer algorithm
+2.  In this we divide the array into two halves and we keep halving recursively until they become too small that can't be broken further
+3.  Merge halves by sorting them 
+4.  Here we create two functions: `merge_sort(custom_list)`    and     `merge(element1,element2,parent_list)`
+5.  In `merge_sort` we use **Recursion**
+6.  The **Time Complexity** of merge sort is **O(NlogN)** and **Space Complexity** is **O(N)** since we need to create sub-arrays.
+7.  It is **better** in terms of performance from other sorting algorithms we have discussed so far.
+8.  Merge sort is good in cases:
+    -   When you need to do a stable sort
+    -   When average expected time is O(NlogN)
+    -   It should be avoided when space is a concern
+
+#### Quick Sort
+
+
+
+
+
+
+
+
+ ## SEARCHING
+
+ ## Main types of searching algorithms:
+ -  **Linear Search**
+ -  **Binary Search**
+
+ ### Linear Search
+ 1. Also called as `sequential search`. It can be applied to **sorted as well as unsorted** array
+ 2. Traverse linearly in your array and search for the target element
+ 3. Stop where you find your target element and return `True` as the result
+ 4. **Time complexity** is **O(N)**
+ 5. **Space complexity** is **O(1)** since we are using something extra space
+
+
+#### Pseudo Code for Linear Search
+
+
+![alt text](image-8.png)
+
+
+### Binary Search
+1.  Binary Search is much faster than Linear Search
+2.  Half of the remaining elements can be eliminated at a time, instead of eliminating them one by one
+3.  Binary Search works only on **sorted array**
+4.  **Time Complexity** is O(logN) and **Space Complexity** is O(1)
+
+
+#### Pseudo Code for Binary Search
+
+![alt text](image-9.png)
+
+### Binary Search (with Recursion)
+
+```python
+    def binary_search(arr, left, right, target):
+        if left > right:
+            return -1
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            return binary_search(arr, mid + 1, right, target)
+        else:
+            return binary_search(arr, left, mid - 1, target)
+```
+
+-   **TC** for BS with Recursion is **O(logN)**
+-   **SC** for BS with Recursion is **O(logN)**
+
+
+
+
+
+
+
+
+
+
+
 
