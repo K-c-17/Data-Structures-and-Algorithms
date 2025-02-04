@@ -1235,10 +1235,14 @@ The Master Theorem is a helpful tool to quickly determine the time complexity of
                root = customQueue.dequeue()
                if root.value.leftChild is None:
                    root.value.leftChild = newNode
-                   return
-               elif root.value.rightChild is None:
+                   return "Insertion Successful"
+               else:
+                   customQueue.enqueue(root.value.leftChild)
+               if root.value.rightChild is None:
                    root.value.rightChild = newNode
-                   return
+                   return "Insertion Successful"
+               else:
+                   customQueue.enqueue(root.value.rightChild)
    ```
 
 3. **Search**: Searches nodes level-wise.
